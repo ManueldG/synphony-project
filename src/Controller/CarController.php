@@ -6,14 +6,16 @@ use App\Entity\Car;
 
 use App\Form\CarType;
 
-use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\CarRepository;
 
+
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Form\FormInterface;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Form\FormInterface;
 
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CarController extends AbstractController
@@ -26,7 +28,8 @@ class CarController extends AbstractController
      */
     public function index(
         Request $request,
-        EntityManagerInterface $entityManager
+        EntityManagerInterface $entityManager,
+        CarRepository $carRepository
 
     ): Response
     {
@@ -47,10 +50,13 @@ class CarController extends AbstractController
             $entityManager->flush();
             $this->addFlash('success','inserimento effettuato');
         }
+
+        $cars = $carRepository->findAll();
             
 
         
         return $this->render('car/index.html.twig', [
+            'cars' => $cars,
             'controller_name' => 'CarController',
             'formCar' => $formCar->createView(),
         ]);

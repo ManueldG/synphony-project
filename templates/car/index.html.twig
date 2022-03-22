@@ -17,6 +17,16 @@
         <input type="submit" value="via">
         {{ form_end(formCar) }}
     {% endblock container %}
+
+    {% for message in app.flashes('success') %}
+        <div class="flash-notice">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {% for car in cars %}
+        <div>{{ car.nome }}<div>
+    {%endfor%}
     
 
     
