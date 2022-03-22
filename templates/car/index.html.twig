@@ -11,9 +11,12 @@
 <div class="example-wrapper">
     <h1>Ciao Linda non dare fastidio a Sara </h1>
 
-{% block container %}
-    {{ form(formCar) }}
-{% endblock container %}
+    {% block container %}
+        {{ form_start(formCar) }}
+        {{ form_rest(formCar) }}
+        <input type="submit" value="via">
+        {{ form_end(formCar) }}
+    {% endblock container %}
     
 
     

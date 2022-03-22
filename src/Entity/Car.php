@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\CarRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\HttpFoundation\Request;
+
 /**
  * @ORM\Entity(repositoryClass=CarRepository::class)
  */
