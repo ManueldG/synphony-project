@@ -7,7 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 
 use Symfony\Component\HttpFoundation\Request;
 
+use ApiPlatform\Core\Annotation\ApiResource;
+
 /**
+ * @apiResource
  * @ORM\Entity(repositoryClass=CarRepository::class)
  */
 class Car
